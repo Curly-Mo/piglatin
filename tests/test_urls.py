@@ -1,8 +1,8 @@
 import unittest
-from piglatin import create_app
+from piglatin_microservice import create_app
 
 
-app = create_app('piglatin.settings.TestConfig')
+app = create_app('piglatin_microservice.settings.TestConfig')
 
 
 class TestURLs(unittest.TestCase):

@@ -2,15 +2,12 @@
 
 from flask_script import Manager, Server
 from flask_script.commands import ShowUrls, Clean
-from piglatin import create_app
+from piglatin_microservice import create_app
 
-app = create_app('piglatin.settings.ProdConfig')
+app = create_app('piglatin_microservice.settings.ProdConfig')
 
 manager = Manager(app)
-manager.add_command("server", Server(
-    app.config.get('SERVER_NAME'),
-    app.config.get('SERVER_PORT'),
-))
+manager.add_command("server", Server())
 manager.add_command("show-urls", ShowUrls())
 manager.add_command("clean", Clean())
 

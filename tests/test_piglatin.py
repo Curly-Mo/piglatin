@@ -1,7 +1,7 @@
 import unittest
 from mock import patch
 
-from piglatin import piglatin
+from piglatin_microservice import piglatin
 
 
 class TestTranslate(unittest.TestCase):
@@ -20,7 +20,7 @@ class TestTranslate(unittest.TestCase):
                 msg='"{}" should be {}'.format(word, expected)
             )
 
-    @patch("piglatin.piglatin.PRONUNCIATIONS")
+    @patch("piglatin_microservice.piglatin.PRONUNCIATIONS")
     def test_vowel_fallback(self, cmudict_mock):
         cmudict_mock = None
         test_words = [
@@ -84,7 +84,7 @@ class TestTranslate(unittest.TestCase):
         actual = piglatin.translate(text)
         self.assertEqual(actual, expected)
 
-    @patch("piglatin.piglatin.PRONUNCIATIONS")
+    @patch("piglatin_microservice.piglatin.PRONUNCIATIONS")
     def test_translate_fallback(self, cmudict_mock):
         cmudict_mock = None
         piglatin.PRONUNCIATIONS = None

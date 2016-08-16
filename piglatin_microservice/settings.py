@@ -1,7 +1,5 @@
 class Config(object):
     SECRET_KEY = "It's a secret to everybody"
-    SERVER_NAME = 'localhost'
-    SERVER_PORT = 80
 
 
 class ProdConfig(Config):

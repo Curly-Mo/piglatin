@@ -1,3 +1,9 @@
+"""
+Translate English text to piglatin using the NLTK library
+
+if NLTK is not available, fallback to a naive solution that still works,
+but won't handle silent consonants propertly
+"""
 import logging
 import string
 

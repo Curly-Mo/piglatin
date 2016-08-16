@@ -2,7 +2,7 @@
 
 from flask import Flask
 
-from piglatin.views.main import main, cache
+from piglatin_microservice.views.main import main, cache
 
 
 def create_app(object_name):
