@@ -16,7 +16,7 @@ except:
 
 def translate(text):
     """Convert a string into piglatin"""
-    pig_words = translate_text(text)
+    pig_words = translate_text(text.strip())
     pig_text = ' '.join(pig_words)
     return pig_text
 
@@ -24,7 +24,7 @@ def translate(text):
 def translate_text(text):
     """Take a string and convert each word to piglatin"""
     # A naive split works better than nltk.word_tokenize
-    for word in text.split(' '):
+    for word in text.split():
         word = word.strip()
         punctuation = None
         if word[-1] in string.punctuation:
@@ -37,7 +37,7 @@ def translate_text(text):
 
 def translate_word(word):
     """Convert a word into piglatin"""
-    if starts_with_vowel_sound(word.lower()):
+    if starts_with_vowel_sound(word):
         suffix = 'yay'
         idx = 0
     else:
@@ -58,16 +58,17 @@ def translate_word(word):
 
 def starts_with_vowel_sound(word):
     """Returns whether a word begins with a vowel sound"""
+    word = word.lower()
     try:
         # Attempt to use nltk vowel phonemes
         for syllables in PRONUNCIATIONS.get(word, []):
             syllable = syllables[0]
             # Vowel phonemes end in an integer lexical stress marker
             return syllable[-1].isdigit()
-        return False
     except:
-        # Naive fallback
-        vowels = 'aeiou'
-        if word[0] in vowels:
-            return True
-        return False
+        pass
+    # Naive fallback
+    vowels = 'aeiou'
+    if word[0] in vowels:
+        return True
+    return False
