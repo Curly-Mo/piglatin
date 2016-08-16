@@ -1,12 +1,10 @@
 from flask import request, jsonify, Blueprint
-from flask_cache import Cache
 
 
 from .. import piglatin
 
 
 main = Blueprint('main', __name__)
-cache = Cache()
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -19,7 +17,6 @@ def index():
 
 
 @main.route('/translate', methods=['GET'])
-@cache.cached(timeout=500)
 def translate():
     text = request.args.get('text')
     if not text:
