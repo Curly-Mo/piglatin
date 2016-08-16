@@ -4,6 +4,7 @@ Microservice to translate text into Pig Latin.
 
 ##Installation
 ```
+git clone https://github.com/Curly-Mo/piglatin.git
 python setup.py install
 ```
 
